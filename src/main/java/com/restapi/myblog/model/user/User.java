@@ -8,6 +8,10 @@ import com.restapi.myblog.model.Post;
 import com.restapi.myblog.model.Todo;
 import com.restapi.myblog.model.audit.DateAudit;
 import com.restapi.myblog.model.role.Role;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NaturalId;
 
 import javax.mail.Address;
@@ -15,8 +19,17 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }),
+        @UniqueConstraint(columnNames = { "email" }) })
 public class User extends DateAudit {
 
     private static final long serialVersionUID = 1L;
@@ -88,6 +101,77 @@ public class User extends DateAudit {
     @JoinColumn(name = "company_id")
     private Company company;
 
+    public User(String userFirstname, String userLastname, String username,
+                String userEmail, String userPassword) {
+        this.userFirstname = userFirstname;
+        this.userLastname = userLastname;
+        this.username = username;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+    }
+
+    public List<Todo> getTodos(){
+        return todos == null ? null : new ArrayList<>(todos);
+    }
+
+    public void setTodos(List<Todo> todos){
+        if(todos == null) {
+            this.todos = null;
+        }else{
+            this.todos = Collections.unmodifiableList(todos);
+        }
+    }
+
+    public List<Album> getAlbums(){
+        return albums.isEmpty() ? null : new ArrayList<>(albums);
+    }
+
+    public void setAlbums(List<Album> albumbs){
+        if(albums.isEmpty() || albums == null){
+            this.albums = null;
+        }else{
+            this.albums = Collections.unmodifiableList(albums);
+        }
+    }
+
+    public List<Post> getPosts(){
+        return posts == null ? null : new ArrayList<>(posts);
+    }
+
+    public void setPosts(List<Post> posts){
+        if(posts == null || posts.isEmpty()){
+            this.posts = null;
+        }else{
+            this.posts = Collections.unmodifiableList(posts);
+        }
+    }
+
+    public List<Role> getRoles() {
+
+        return roles == null ? null : new ArrayList<>(roles);
+    }
+
+    public void setRoles(List<Role> roles) {
+
+        if (roles == null) {
+            this.roles = null;
+        } else {
+            this.roles = Collections.unmodifiableList(roles);
+        }
+    }
+
+    public List<Comment> getComments() {
+        return comments == null ? null : new ArrayList<>(comments);
+    }
+
+    public void setComments(List<Comment> comments) {
+
+        if (comments == null) {
+            this.comments = null;
+        } else {
+            this.comments = Collections.unmodifiableList(comments);
+        }
+    }
 
 
 
