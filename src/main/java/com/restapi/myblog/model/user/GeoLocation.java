@@ -1,9 +1,7 @@
 package com.restapi.myblog.model.user;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.restapi.myblog.model.audit.UserDateAudit;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -15,88 +13,76 @@ import java.time.Instant;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "company")
-public class Company extends UserDateAudit {
+@Table(name = "geo")
+public class GeoLocation extends UserDateAudit {
 
     private static final long serialVersionUID = 1L;
 
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long companyid;
+    private Long id;
 
-    @Column(name = "name")
-    private String companyName;
+    @Column(name = "lat")
+    private String latitude;
 
-    @Column(name = "catch_phrase")
-    private String companyCatchPhrase;
+    @Column(name = "lng")
+    private String longitude;
 
-    @Column(name = "bs")
-    private String bs;
+    @OneToOne(mappedBy = "geo")
+    private Address address;
 
-    @OneToOne(mappedBy = "company")
-    private User user;
-
-    public Company(String name, String catchPhrase, String bs) {
-        this.companyName = companyName;
-        this.companyCatchPhrase = companyCatchPhrase;
-        this.bs = bs;
-    }
-
-    @JsonIgnore
-    public Long getCompanyid() {
-        return companyid;
-    }
-
-    public void setCompanyid(Long companyid) {
-        this.companyid = companyid;
+    public GeoLocation(String latitude, String longitude){
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     @JsonIgnore
     @Override
-    public Long getCreatedBy() {
+    public Long getCreatedBy(){
         return super.getCreatedBy();
     }
 
     @JsonIgnore
     @Override
-    public void setCreatedBy(Long createdBy) {
+    public void setCreatedBy(Long createdBy){
         super.setCreatedBy(createdBy);
     }
 
     @JsonIgnore
     @Override
-    public Long getUpdatedBy() {
+    public Long getUpdatedBy(){
         return super.getUpdatedBy();
     }
 
     @JsonIgnore
     @Override
-    public void setUpdatedBy(Long updatedBy) {
+    public void setUpdatedBy(Long updatedBy){
         super.setUpdatedBy(updatedBy);
     }
 
     @JsonIgnore
     @Override
-    public Instant getCreatedAt() {
+    public Instant getCreatedAt(){
         return super.getCreatedAt();
     }
 
     @JsonIgnore
     @Override
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(Instant createdAt){
         super.setCreatedAt(createdAt);
     }
 
     @JsonIgnore
     @Override
-    public Instant getUpdatedAt() {
+    public Instant getUpdatedAt(){
         return super.getUpdatedAt();
     }
 
     @JsonIgnore
     @Override
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(Instant updatedAt){
         super.setUpdatedAt(updatedAt);
     }
+
 }

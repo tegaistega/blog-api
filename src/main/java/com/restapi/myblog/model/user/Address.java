@@ -1,9 +1,10 @@
 package com.restapi.myblog.model.user;
-
+/**
+ * @author Tega Isiboge
+ * */
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.restapi.myblog.model.audit.UserDateAudit;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -15,52 +16,57 @@ import java.time.Instant;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "company")
-public class Company extends UserDateAudit {
+@Table(name = "address")
+public class Address extends UserDateAudit {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long companyid;
+    private Long addressid;
 
-    @Column(name = "name")
-    private String companyName;
+    @Column(name = "street")
+    private String street;
 
-    @Column(name = "catch_phrase")
-    private String companyCatchPhrase;
+    @Column(name = "suite")
+    private String suite;
 
-    @Column(name = "bs")
-    private String bs;
+    @Column(name = "city")
+    private String city;
 
-    @OneToOne(mappedBy = "company")
+    @Column(name = "zipcode")
+    private String zipcode;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "geo_id")
+    private GeoLocation geoLocation;
+
+    @OneToOne(mappedBy = "address")
     private User user;
 
-    public Company(String name, String catchPhrase, String bs) {
-        this.companyName = companyName;
-        this.companyCatchPhrase = companyCatchPhrase;
-        this.bs = bs;
+    public Address(String street, String suite, String city, String zipcode,
+                   GeoLocation geoLocation){
+        this.street = street;
+        this.suite = suite;
+        this.city = city;
+        this.zipcode = zipcode;
+        this.geoLocation = geoLocation;
     }
 
     @JsonIgnore
-    public Long getCompanyid() {
-        return companyid;
-    }
-
-    public void setCompanyid(Long companyid) {
-        this.companyid = companyid;
+    public Long getAddressid(){
+        return addressid;
     }
 
     @JsonIgnore
     @Override
-    public Long getCreatedBy() {
+    public Long getCreatedBy(){
         return super.getCreatedBy();
     }
 
     @JsonIgnore
     @Override
-    public void setCreatedBy(Long createdBy) {
+    public void setCreatedBy(Long createdBy){
         super.setCreatedBy(createdBy);
     }
 
