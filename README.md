@@ -2,8 +2,8 @@
 This is a social media app. It allows users signup and post statuses, comments images and more.
 
 # Backend
-Spring Boot
-Spring Security
+<li>Spring Boot</li>
+<li>Spring Security</li>
 Hibernate
 
 # Database
