@@ -1,5 +1,5 @@
 # social media - api
-This is a social media app. It allows uses, signup and post statuses, comments images and more.
+This is a social media app. It allows users signup and post statuses, comments images and more.
 
 # Backend
 Spring Boot
