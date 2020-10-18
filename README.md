@@ -4,21 +4,21 @@ This is a social media app. It allows users signup and post statuses, comments i
 # Backend
 <li>Spring Boot</li>
 <li>Spring Security</li>
-Hibernate
+<li>Hibernate</li>
 
 # Database
-MySQL
+<li>MySQL</li>
 
-Build Tool
-Maven 3.3.9
+# Build Tool
+<li>Maven 3.3.9</li>
 
-Features
-Content: post, comment, category, album, tag, todo
-User: roles, profile, avatar, email confirmation, address, geolocation
+# Features
+<li>Content: post, comment, category, album, tag, todo</li>
+<li>User: roles, profile, avatar, email confirmation, address, geolocation</li>
 
 # How It Works
-Database Setup
-Before deployment, please make sure MySQL database is up and running:
+<li>Database Setup</li>
+<li>Before deployment, please make sure MySQL database is up and running:</li>
 
 # Default schema name is blog-api
 You can also edit database configuration in src/main/resources/application.properties on your own.
