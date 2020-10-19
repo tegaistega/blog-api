@@ -1,5 +1,5 @@
-# social media - api
-This is a social media app. It allows users signup and post statuses, comments images and more.
+# Blog - api
+This is a blog app. It allows users signup, create posts, make comments, update images and more.
 
 # Backend
 <li>Spring Boot</li>
