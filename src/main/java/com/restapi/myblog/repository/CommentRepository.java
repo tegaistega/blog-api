@@ -1,4 +1,7 @@
-package com.restapi.myblog.repository;
-
-public interface CommentRepository {
-}
+//package com.restapi.myblog.repository;
+//
+//import com.restapi.myblog.model.Comment;
+//import org.springframework.data.jpa.repository.JpaRepository;
+//
+//public interface CommentRepository extends JpaRepository<Comment, Long> {
+//}

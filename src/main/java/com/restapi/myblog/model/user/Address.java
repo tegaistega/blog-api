@@ -38,19 +38,18 @@ public class Address extends UserDateAudit {
     private String zipcode;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "geo_id")
+//    @JoinColumn(name = "geo_id")
     private GeoLocation geoLocation;
 
     @OneToOne(mappedBy = "address")
     private User user;
 
-    public Address(String street, String suite, String city, String zipcode,
-                   GeoLocation geoLocation){
+    public Address(String street, String suite, String city, String zipcode){
         this.street = street;
         this.suite = suite;
         this.city = city;
         this.zipcode = zipcode;
-        this.geoLocation = geoLocation;
+//        this.geoLocation = geoLocation;
     }
 
     @JsonIgnore

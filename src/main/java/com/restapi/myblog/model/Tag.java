@@ -33,9 +33,8 @@ public class Tag extends UserDateAudit {
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "post_tag", joinColumns = @JoinColumn(name = "tag_id",
-            referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "post_id", referencedColumnName = "id"))
-
+//    @JoinTable(name = "post_tag", joinColumns = @JoinColumn(name = "tag_id",
+//            referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "post_id", referencedColumnName = "id"))
     private List<Post> posts;
 
     public Tag(String name){

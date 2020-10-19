@@ -29,8 +29,8 @@ public class GeoLocation extends UserDateAudit {
     @Column(name = "lng")
     private String longitude;
 
-    @OneToOne(mappedBy = "geo")
-    private Address address;
+//    @OneToOne(mappedBy = "geo")
+//    private Address address;
 
     public GeoLocation(String latitude, String longitude){
         this.latitude = latitude;

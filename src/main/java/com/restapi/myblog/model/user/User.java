@@ -8,13 +8,11 @@ import com.restapi.myblog.model.Post;
 import com.restapi.myblog.model.Todo;
 import com.restapi.myblog.model.audit.DateAudit;
 import com.restapi.myblog.model.role.Role;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NaturalId;
 
-import javax.mail.Address;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -23,10 +21,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+//import com.restapi.myblog.model.role.Role;
+
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }),
         @UniqueConstraint(columnNames = { "email" }) })
@@ -45,7 +44,7 @@ public class User extends DateAudit {
     private String userFirstname;
 
     @NotBlank
-    @Column(name = "first_name")
+    @Column(name = "last_name")
     @Size(max = 40)
     private String userLastname;
 
@@ -77,8 +76,7 @@ public class User extends DateAudit {
     @Column(name = "website")
     private String website;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Role> roles;
 
     @JsonIgnore
@@ -171,6 +169,10 @@ public class User extends DateAudit {
         } else {
             this.comments = Collections.unmodifiableList(comments);
         }
+    }
+
+    public String getUsername(){
+        return username;
     }
 
 
