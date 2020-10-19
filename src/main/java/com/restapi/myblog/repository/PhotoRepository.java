@@ -1,7 +1,7 @@
-//package com.restapi.myblog.repository;
-//
-//import com.restapi.myblog.model.Photo;
-//import org.springframework.data.jpa.repository.JpaRepository;
-//
-//public interface PhotoRepository extends JpaRepository<Photo, Long> {
-//}
+package com.restapi.myblog.repository;
+
+import com.restapi.myblog.model.Photo;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PhotoRepository extends JpaRepository<Photo, Long> {
+}
