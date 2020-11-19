@@ -1,4 +1,4 @@
-package com.restapi.myblog.actionload;
+package com.restapi.myblog.payload;
 
 import java.time.Instant;
 

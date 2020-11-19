@@ -1,6 +1,6 @@
 package com.restapi.myblog.exception;
 
-import com.restapi.myblog.actionload.ApiResponse;
+import com.restapi.myblog.payload.response.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 

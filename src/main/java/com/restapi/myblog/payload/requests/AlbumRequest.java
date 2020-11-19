@@ -1,9 +1,9 @@
-package com.restapi.myblog.actionload;
+package com.restapi.myblog.payload.requests;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.restapi.myblog.model.Photo;
+import com.restapi.myblog.model.user.User;
+import com.restapi.myblog.payload.UserDateAuditPayload;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,14 +14,14 @@ import java.util.List;
  * Tega Isiboge
  * */
 
-@EqualsAndHashCode(callSuper = true)
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class AlbumResponse extends UserDateAuditPayload{
+public class AlbumRequest extends UserDateAuditPayload {
 
-    private Long id;
+    private Long albumrequestid;
 
-    private String title;
+    private String albumRequestTitle;
+
+    private User user;
 
     private List<Photo> photo;
 
@@ -36,4 +36,6 @@ public class AlbumResponse extends UserDateAuditPayload{
             this.photo = Collections.unmodifiableList(photo);
         }
     }
+
+
 }
