@@ -1,4 +1,2 @@
-package com.restapi.myblog.security;
-
-public class JwtTokenProvider {
+package com.restapi.myblog.security;public class JwtTokenProvider {
 }
