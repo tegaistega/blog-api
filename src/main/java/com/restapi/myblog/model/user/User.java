@@ -64,7 +64,7 @@ public class User extends DateAudit {
     @Size(max = 40)
     @Column(name = "email")
     @Email
-    private String userEmail;
+    private String email;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "address_id")
@@ -100,11 +100,11 @@ public class User extends DateAudit {
     private Company company;
 
     public User(String userFirstname, String userLastname, String username,
-                String userEmail, String userPassword) {
+                String email, String userPassword) {
         this.userFirstname = userFirstname;
         this.userLastname = userLastname;
         this.username = username;
-        this.userEmail = userEmail;
+        this.email = email;
         this.userPassword = userPassword;
     }
 
